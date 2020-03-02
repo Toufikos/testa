@@ -37,7 +37,8 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         calendarWidget = new QCalendarWidget(centralwidget);
         calendarWidget->setObjectName(QString::fromUtf8("calendarWidget"));
-        calendarWidget->setGeometry(QRect(80, 240, 481, 181));
+        calendarWidget->setGeometry(QRect(60, 150, 501, 271));
+        calendarWidget->setStyleSheet(QString::fromUtf8("background-color = yellow;"));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));

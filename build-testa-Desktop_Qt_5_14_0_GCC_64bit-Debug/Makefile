@@ -52,9 +52,11 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../testa/main.cpp \
+SOURCES       = ../testa/gestioncalendrier.cpp \
+		../testa/main.cpp \
 		../testa/mainwindow.cpp moc_mainwindow.cpp
-OBJECTS       = main.o \
+OBJECTS       = gestioncalendrier.o \
+		main.o \
 		mainwindow.o \
 		moc_mainwindow.o
 DIST          = ../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/spec_pre.prf \
@@ -247,6 +249,7 @@ DIST          = ../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/spec_pre.prf
 		../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/spec_post.prf \
+		../testa/.qmake.stash \
 		../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/default_pre.prf \
@@ -267,7 +270,9 @@ DIST          = ../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/spec_pre.prf
 		../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/exceptions.prf \
 		../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/yacc.prf \
 		../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/lex.prf \
-		../testa/testa.pro ../testa/mainwindow.h ../testa/main.cpp \
+		../testa/testa.pro ../testa/gestioncalendrier.h \
+		../testa/mainwindow.h ../testa/gestioncalendrier.cpp \
+		../testa/main.cpp \
 		../testa/mainwindow.cpp
 QMAKE_TARGET  = testa
 DESTDIR       = 
@@ -470,6 +475,7 @@ Makefile: ../testa/testa.pro ../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/linux-g+
 		../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/default_pre.prf \
@@ -682,6 +688,7 @@ Makefile: ../testa/testa.pro ../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/linux-g+
 ../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/qt_config.prf:
 ../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/linux-g++/qmake.conf:
 ../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/toolchain.prf:
 ../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/default_pre.prf:
@@ -718,8 +725,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt5.14.0/5.14.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../testa/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../testa/main.cpp ../testa/mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../testa/gestioncalendrier.h ../testa/mainwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../testa/gestioncalendrier.cpp ../testa/main.cpp ../testa/mainwindow.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../testa/mainwindow.ui $(DISTDIR)/
 	$(COPY_FILE) --parents testa_fr_FR.ts $(DISTDIR)/
 
@@ -888,6 +895,9 @@ compiler_lex_clean:
 compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
+
+gestioncalendrier.o: ../testa/gestioncalendrier.cpp ../testa/gestioncalendrier.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gestioncalendrier.o ../testa/gestioncalendrier.cpp
 
 main.o: ../testa/main.cpp ../testa/mainwindow.h \
 		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtWidgets/QMainWindow \
@@ -1114,7 +1124,27 @@ mainwindow.o: ../testa/mainwindow.cpp ../testa/mainwindow.h \
 		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtGui/qicon.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtWidgets/QCalendarWidget \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtWidgets/qcalendarwidget.h \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtWidgets/QMenuBar \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtWidgets/qmenubar.h \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtWidgets/qmenu.h \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtWidgets/qaction.h \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtWidgets/QStatusBar \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtWidgets/qstatusbar.h \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtWidgets/QWidget \
+		../../../../Qt5.14.0/5.14.0/gcc_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../testa/mainwindow.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
