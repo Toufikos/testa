@@ -16,13 +16,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    customwindow.cpp \
     gestioncalendrier.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    windowtitlebar.cpp
 
 HEADERS += \
+    customwindow.h \
     gestioncalendrier.h \
-    mainwindow.h
+    mainwindow.h \
+    windowtitlebar.h
 
 FORMS += \
     mainwindow.ui

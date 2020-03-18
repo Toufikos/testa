@@ -1,15 +1,21 @@
 #include "mainwindow.h"
+#include "customwindow.h"
 
 #include <QApplication>
+
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
 
+    CustomWIndow c;
 
+    c.show();
+
+   // MainWindow w;
+   // w.show();
 
     qApp->setStyleSheet("QLineEdit { background-color: yellow}");
     return a.exec();
 }
+
