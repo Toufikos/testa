@@ -17,9 +17,7 @@ public:
 
 private slots:
     void on_calendarWidget_clicked(const QDate &date);
-
     void on_calendarWidget_windowIconTextChanged(const QString &iconText);
-
     void on_pushButton_clicked();
 
   private:
