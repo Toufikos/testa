@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
    // MainWindow w;
    // w.show();
 
-    qApp->setStyleSheet("QLineEdit { background-color: yellow}");
+    qApp->setStyleSheet("QLineEdit { background-color: green}");
     return a.exec();
 }
 
